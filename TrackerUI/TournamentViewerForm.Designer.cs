@@ -1,7 +1,7 @@
 ﻿
 namespace TrackerUI
 {
-    partial class TournamentVieweForm
+    partial class TournamentViewerForm
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
