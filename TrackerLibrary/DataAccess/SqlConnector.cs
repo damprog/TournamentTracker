@@ -16,9 +16,10 @@ namespace TrackerLibrary.DataAccess
         /// <returns>The prize information, including the unique identifier.</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+           // using (IDbConnection connection = new System.Data.SqlClient. //(GlobalConfig.CnnString("Tournaments")))
             {
-
+                model.Id = 1;
+                return model;
             }
         }
     }
