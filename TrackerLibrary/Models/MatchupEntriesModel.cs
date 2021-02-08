@@ -1,4 +1,4 @@
-﻿namespace TrackerLibrary
+﻿namespace TrackerLibrary.Models
 {
     internal class MatchupEntriesModel
     {
