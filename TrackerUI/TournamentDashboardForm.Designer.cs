@@ -90,9 +90,9 @@ namespace TrackerUI
             this.createTournamentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createTournamentButton.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.createTournamentButton.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.createTournamentButton.Location = new System.Drawing.Point(207, 348);
+            this.createTournamentButton.Location = new System.Drawing.Point(185, 319);
             this.createTournamentButton.Name = "createTournamentButton";
-            this.createTournamentButton.Size = new System.Drawing.Size(320, 67);
+            this.createTournamentButton.Size = new System.Drawing.Size(365, 96);
             this.createTournamentButton.TabIndex = 27;
             this.createTournamentButton.Text = "Create Tournament";
             this.createTournamentButton.UseVisualStyleBackColor = true;
