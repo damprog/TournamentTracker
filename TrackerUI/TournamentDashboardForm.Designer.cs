@@ -32,7 +32,7 @@ namespace TrackerUI
             this.createTeamLabel = new System.Windows.Forms.Label();
             this.loadExistingTournamentDropDown = new System.Windows.Forms.ComboBox();
             this.loadExistingTournamentLabel = new System.Windows.Forms.Label();
-            this.loadTournamentbutton = new System.Windows.Forms.Button();
+            this.loadTournamentButton = new System.Windows.Forms.Button();
             this.createTournamentButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -67,20 +67,21 @@ namespace TrackerUI
             this.loadExistingTournamentLabel.TabIndex = 19;
             this.loadExistingTournamentLabel.Text = "Load Existing Tournament";
             // 
-            // loadTournamentbutton
+            // loadTournamentButton
             // 
-            this.loadTournamentbutton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.loadTournamentbutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.loadTournamentbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.loadTournamentbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadTournamentbutton.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.loadTournamentbutton.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.loadTournamentbutton.Location = new System.Drawing.Point(219, 233);
-            this.loadTournamentbutton.Name = "loadTournamentbutton";
-            this.loadTournamentbutton.Size = new System.Drawing.Size(296, 51);
-            this.loadTournamentbutton.TabIndex = 21;
-            this.loadTournamentbutton.Text = "Load Tournament";
-            this.loadTournamentbutton.UseVisualStyleBackColor = true;
+            this.loadTournamentButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.loadTournamentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.loadTournamentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.loadTournamentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadTournamentButton.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.loadTournamentButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.loadTournamentButton.Location = new System.Drawing.Point(219, 233);
+            this.loadTournamentButton.Name = "loadTournamentButton";
+            this.loadTournamentButton.Size = new System.Drawing.Size(296, 51);
+            this.loadTournamentButton.TabIndex = 21;
+            this.loadTournamentButton.Text = "Load Tournament";
+            this.loadTournamentButton.UseVisualStyleBackColor = true;
+            this.loadTournamentButton.Click += new System.EventHandler(this.loadTournamentbutton_Click);
             // 
             // createTournamentButton
             // 
@@ -96,6 +97,7 @@ namespace TrackerUI
             this.createTournamentButton.TabIndex = 27;
             this.createTournamentButton.Text = "Create Tournament";
             this.createTournamentButton.UseVisualStyleBackColor = true;
+            this.createTournamentButton.Click += new System.EventHandler(this.createTournamentButton_Click);
             // 
             // TournamentDashboardForm
             // 
@@ -104,7 +106,7 @@ namespace TrackerUI
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(735, 483);
             this.Controls.Add(this.createTournamentButton);
-            this.Controls.Add(this.loadTournamentbutton);
+            this.Controls.Add(this.loadTournamentButton);
             this.Controls.Add(this.loadExistingTournamentDropDown);
             this.Controls.Add(this.loadExistingTournamentLabel);
             this.Controls.Add(this.createTeamLabel);
@@ -122,7 +124,7 @@ namespace TrackerUI
         private System.Windows.Forms.Label createTeamLabel;
         private System.Windows.Forms.ComboBox loadExistingTournamentDropDown;
         private System.Windows.Forms.Label loadExistingTournamentLabel;
-        private System.Windows.Forms.Button loadTournamentbutton;
+        private System.Windows.Forms.Button loadTournamentButton;
         private System.Windows.Forms.Button createTournamentButton;
     }
 }
