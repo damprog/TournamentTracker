@@ -41,7 +41,7 @@ namespace TrackerUI
             this.teamTwoScoreValue = new System.Windows.Forms.TextBox();
             this.teamTwoScoreLabel = new System.Windows.Forms.Label();
             this.teamTwoName = new System.Windows.Forms.Label();
-            this.varsusLabel = new System.Windows.Forms.Label();
+            this.versusLabel = new System.Windows.Forms.Label();
             this.scoreButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -171,16 +171,16 @@ namespace TrackerUI
             this.teamTwoName.TabIndex = 9;
             this.teamTwoName.Text = "<team two>";
             // 
-            // varsusLabel
+            // versusLabel
             // 
-            this.varsusLabel.AutoSize = true;
-            this.varsusLabel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.varsusLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.varsusLabel.Location = new System.Drawing.Point(545, 316);
-            this.varsusLabel.Name = "varsusLabel";
-            this.varsusLabel.Size = new System.Drawing.Size(64, 38);
-            this.varsusLabel.TabIndex = 12;
-            this.varsusLabel.Text = "-vs-";
+            this.versusLabel.AutoSize = true;
+            this.versusLabel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.versusLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.versusLabel.Location = new System.Drawing.Point(545, 316);
+            this.versusLabel.Name = "versusLabel";
+            this.versusLabel.Size = new System.Drawing.Size(64, 38);
+            this.versusLabel.TabIndex = 12;
+            this.versusLabel.Text = "-vs-";
             // 
             // scoreButton
             // 
@@ -205,7 +205,7 @@ namespace TrackerUI
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(916, 526);
             this.Controls.Add(this.scoreButton);
-            this.Controls.Add(this.varsusLabel);
+            this.Controls.Add(this.versusLabel);
             this.Controls.Add(this.teamTwoScoreValue);
             this.Controls.Add(this.teamTwoScoreLabel);
             this.Controls.Add(this.teamTwoName);
@@ -241,7 +241,7 @@ namespace TrackerUI
         private System.Windows.Forms.TextBox teamTwoScoreValue;
         private System.Windows.Forms.Label teamTwoScoreLabel;
         private System.Windows.Forms.Label teamTwoName;
-        private System.Windows.Forms.Label varsusLabel;
+        private System.Windows.Forms.Label versusLabel;
         private System.Windows.Forms.Button scoreButton;
     }
 }
