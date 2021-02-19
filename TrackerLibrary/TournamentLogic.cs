@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary
@@ -29,7 +28,7 @@ namespace TrackerLibrary
 
         public static void UpdateTournamentResults(TournamentModel model)
         {
-            int statingRound = model.CheckCurrentRoud();
+            int startingRound = model.CheckCurrentRoud();
             List<MatchupModel> toScore = new List<MatchupModel>();
 
             foreach (List<MatchupModel> round in model.Rounds)
@@ -50,11 +49,69 @@ namespace TrackerLibrary
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
             int endingRound = model.CheckCurrentRoud();
 
-            if (endingRound > statingRound)
+            if (endingRound > startingRound)
             {
-                // All users
-                // EmailLogic.SendEmail();
+                AlertUsersToNewRound(model);
+
             }
+        }
+
+        private static void AlertUsersToNewRound(this TournamentModel model)
+        {
+            int currentRoundNumber = model.CheckCurrentRoud();
+            List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currentRoundNumber).First();
+            foreach (MatchupModel matchup in currentRound)
+            {
+                foreach (MatchupEntryModel me in matchup.Entries)
+                {
+                    if (me.TeamCompeting != null)
+                    {
+                        foreach (PersonModel p in me.TeamCompeting.TeamMembers)
+                        {
+                            AlertPersonToNewRound(p, me.TeamCompeting.TeamName, matchup.Entries.Where(x => x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+        }
+        private static void AlertPersonToNewRound(PersonModel p, string teamName, MatchupEntryModel competitor)
+        {
+            if (p.EmailAddress.Length == 0)
+            {
+                return;
+            }
+
+            string to = "";
+            string subject = "";
+            StringBuilder body = new StringBuilder();
+
+            if (competitor != null)
+            {
+                subject = $"You have a new matchup with { competitor.TeamCompeting.TeamName }";
+
+                body.AppendLine("<h1>You have a new matchup</h1>");
+                body.Append("<strong>Competitor: </strong>");
+                body.AppendLine(competitor.TeamCompeting.TeamName);
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Have a great time!");
+                body.AppendLine("~Tournament Tracker");
+            }
+            else
+            {
+                subject = "You have a bye week this round";
+
+                body.AppendLine("Enjoy your round off!");
+                body.AppendLine("~Tournament Tracker");
+            }
+
+            to = p.EmailAddress;
+
+            EmailLogic.SendEmail(to, subject, body.ToString());
         }
 
         private static int CheckCurrentRoud(this TournamentModel model)
@@ -103,7 +160,8 @@ namespace TrackerLibrary
             foreach (MatchupModel m in models)
             {
                 // Checks for bye week entry
-                if(m.Entries.Count == 1){
+                if (m.Entries.Count == 1)
+                {
                     m.Winner = m.Entries[0].TeamCompeting;
                     continue;
                 }
@@ -115,7 +173,7 @@ namespace TrackerLibrary
                     {
                         m.Winner = m.Entries[0].TeamCompeting;
                     }
-                    else if(m.Entries[1].Score < m.Entries[0].Score)
+                    else if (m.Entries[1].Score < m.Entries[0].Score)
                     {
                         m.Winner = m.Entries[1].TeamCompeting;
                     }
@@ -140,7 +198,7 @@ namespace TrackerLibrary
                         throw new Exception("We do not allow ties in this application.");
                     }
 
-                } 
+                }
             }
         }
 
@@ -220,7 +278,7 @@ namespace TrackerLibrary
             while (val < teamCount)
             {
                 output += 1;
-                val *= 2; 
+                val *= 2;
             }
             return output;
         }
