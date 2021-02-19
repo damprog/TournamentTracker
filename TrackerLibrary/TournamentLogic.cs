@@ -29,6 +29,7 @@ namespace TrackerLibrary
 
         public static void UpdateTournamentResults(TournamentModel model)
         {
+            int statingRound = model.CheckCurrentRoud();
             List<MatchupModel> toScore = new List<MatchupModel>();
 
             foreach (List<MatchupModel> round in model.Rounds)
@@ -47,6 +48,28 @@ namespace TrackerLibrary
             AdvanceWinners(toScore, model);
 
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
+            int endingRound = model.CheckCurrentRoud();
+
+            if (endingRound > statingRound)
+            {
+                // All users
+                // EmailLogic.SendEmail();
+            }
+        }
+
+        private static int CheckCurrentRoud(this TournamentModel model)
+        {
+            int output = 1;
+
+            foreach (List<MatchupModel> round in model.Rounds)
+            {
+                if (round.All(x => x.Winner != null))
+                {
+                    output += 1;
+                }
+            }
+
+            return output;
         }
 
         private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
